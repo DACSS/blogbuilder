@@ -1,0 +1,17 @@
+Package: dacss.websites
+Type: Package
+Title: Create and Manage DACSS Course Websites
+Version: 1.0.0
+Author: Hans Quiogue
+Maintainer: DACSS <dacss@umass.edu>
+Description: Easily generate and maintain Data Analytics and Computation 
+    Social Science course websites created with distill and postcards.
+License: CC BY-NC 4.0
+Imports:
+    distill,
+    postcards,
+    usethis,
+    easycsv
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
