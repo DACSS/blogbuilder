@@ -15,6 +15,7 @@ render_all_posts <- function() {
 
   # Goes through each post
   for (post in all_post_files) {
+    post <- paste('_posts/', post, sep = '')
     # Un-drafts a Rmd file
     change_yaml_matter(post, draft = FALSE, output_file = post)
     # Renders Rmd file into Distill article
