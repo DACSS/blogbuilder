@@ -19,6 +19,7 @@ render_all_posts <- function() {
     # Un-drafts a Rmd file
     change_yaml_matter(post, draft = FALSE, output_file = post)
     # Renders Rmd file into Distill article
-    rmarkdown::render(post)
+    rmarkdown::render(post, quiet = TRUE)
+    message(paste(post, 'rendered.'))
   }
 }
