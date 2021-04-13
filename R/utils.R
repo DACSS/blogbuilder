@@ -57,3 +57,37 @@ change_yaml_matter <- function(input_file, ..., output_file) {
     return(invisible(output_lines))
   }
 }
+
+# Import spreadsheet of student names
+import_spreadsheet <- function(spreadsheet, names_col, ...) {
+  type <- determine_spreadsheet(spreadsheet)
+  names <- NULL
+
+  message(paste(type, 'format detected.'))
+
+  # Reads in data based on file types
+  if (type == 'csv') {
+    df <- readr::read_csv(spreadsheet, ...)
+  } else if (type ==  'xlsx') {
+    df <- readxl::read_xlsx(spreadsheet, ...)
+  }
+  else stop(paste(type, 'is not a supported file type.'))
+
+  if (is.null(df)) stop('An error has occured with the spreadsheet.')
+  if (!(names_col %in% colnames(df)) & typeof(names_col) == 'character') {
+    stop(paste(names_col, 'does not exist in the DataFrame.'))
+  }
+
+  # Vector of student names
+  names <- df[[names_col]]
+
+  return(names)
+}
+
+
+# Determines if spread is an Excel file or CSV
+determine_spreadsheet <- function(spreadsheet) {
+  if (endsWith(spreadsheet, ".csv")) return("csv")
+  else if (endsWith(spreadsheet, ".xlsx")) return("xlsx")
+  else return(NULL)
+}

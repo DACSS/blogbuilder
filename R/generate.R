@@ -29,3 +29,39 @@ generate_dacss_blog <- function() {
   # New project
   create_dacss_proj(repo_link, directory)
 }
+
+
+#' Generate student postcards
+#'
+#' Generates 'about me' pages for students in a Postcards setup. A spreadsheet
+#' of student information is taken as input -- with names as a primary
+#' requirement. Csv and xlsx formats are accepted.
+#' It will also generate list of student names in the Student page.
+#' Assumes the working directory is based on the GitHub blog repo prokect.
+#'
+#' @param spreadsheet A csv or xlsx file containing student names.
+#' @param names_col The column containing student names. Can be the column
+#' name or number.
+#' @param theme The template theme to create postcard pages with. The default
+#' value is "jolla".
+#' @param ... Additional arguments can be taken based on arguments for
+#' read_csv or read_xlsx.
+#' @export
+generate_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...) {
+  names <- import_spreadsheet(spreadsheet, names_col, ...)
+
+  for (name in names) {
+    file_name <- paste(name, '.Rmd', sep = '')
+    file_html <- paste(name, '.html', sep = '')
+    message(paste(name, 'created'))
+
+    # Create postcard R Markdown files for each student
+    postcards::create_postcard(file = name, template = theme,
+                               edit = FALSE, create_image = FALSE)
+    # Move file to users folder
+    file.rename(from = file.path(".", file_name),
+                to = file.path("./users", file_name))
+
+    message('Success. Student files created.')
+  }
+}
