@@ -46,24 +46,29 @@ render_student_pages <- function() {
   # Iterates through each page
   for (user in users) {
     # Move files to root
-    file.rename(from = file.path("./users", user),
-                to = file.path(".", user))
+    file.rename(from = file.path('./users', user),
+                to = file.path('.', user))
   }
 
   # Builds files
   message('Building files... Please wait...')
+  # Rename students
+  file.rename(from = file.path('.', 'students.Rmd'),
+              to = file.path('.', '_students.Rmd'))
+
   rmarkdown::render_site(quiet = TRUE)
+
+  # Rename students
+  file.rename(from = file.path('.', '_students.Rmd'),
+              to = file.path('.', 'students.Rmd'))
 
   # Moves files back to user folder
   for (user in users) {
-    # user_html <- sub('.Rmd', '.html', users)
-
-    file.rename(from = file.path(".", user),
-                to = file.path("./users", user))
-
-    # file.rename(from = file.path(".", user_html),
-    #            to = file.path("./users/outputs", user_html))
+    file.rename(from = file.path('.', user),
+                to = file.path('./users', user))
   }
+
+  rmarkdown::render_site(input = 'students.Rmd', quiet = TRUE)
 
   message('Success! Student pages rendered successfully.')
   utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
