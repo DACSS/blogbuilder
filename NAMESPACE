@@ -3,4 +3,4 @@
 export(generate_dacss_blog)
 export(generate_student_pages)
 export(render_all_posts)
-importFrom(rmarkdown,render)
+export(render_student_pages)
