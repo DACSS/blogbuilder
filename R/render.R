@@ -20,7 +20,12 @@ render_all_posts <- function() {
     # Renders Rmd file into Distill article
     rmarkdown::render(post, quiet = TRUE)
     message(paste(post, 'rendered.'))
+    # Drafts Rmd file again
+    change_yaml_matter(post, draft = TRUE, output_file = post)
   }
+
+  message('Success! Posts rendered successfully.')
+  utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
 }
 
 #' Renders all student pages
@@ -61,6 +66,5 @@ render_student_pages <- function() {
   }
 
   message('Success! Student pages rendered successfully.')
-
   utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
 }
