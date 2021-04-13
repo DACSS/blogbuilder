@@ -61,7 +61,7 @@ generate_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...)
     # Move file to users folder
     file.rename(from = file.path(".", file_name),
                 to = file.path("./users", file_name))
-
-    message('Success. Student files created.')
   }
+
+  message('Success. Student files created.')
 }

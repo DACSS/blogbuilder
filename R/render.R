@@ -5,7 +5,6 @@
 #' the Distill blog is built. Assumes a DACSS blog R project
 #' is being used.
 #'
-#' @importFrom rmarkdown render
 #' @export
 render_all_posts <- function() {
   all_post_files <- list.files('_posts', '*.Rmd', recursive = TRUE)
@@ -22,4 +21,46 @@ render_all_posts <- function() {
     rmarkdown::render(post, quiet = TRUE)
     message(paste(post, 'rendered.'))
   }
+}
+
+#' Renders all student pages
+#'
+#' Renders all student pages for a DACSS course site.
+#' Assumes the working directory is the GitHub repo
+#' project file.
+#' @export
+render_student_pages <- function() {
+  # Get path for all users
+  all_pages <- list.files('users', '*.Rmd', recursive = TRUE)
+  # Get users without path
+  users <- sub('users/', '', all_pages)
+
+  # No pages found
+  if (identical(all_pages, character(0))) stop('No pages found!')
+
+  # Iterates through each page
+  for (user in users) {
+    # Move files to root
+    file.rename(from = file.path("./users", user),
+                to = file.path(".", user))
+  }
+
+  # Builds files
+  message('Building files... Please wait...')
+  rmarkdown::render_site(quiet = TRUE)
+
+  # Moves files back to user folder
+  for (user in users) {
+    # user_html <- sub('.Rmd', '.html', users)
+
+    file.rename(from = file.path(".", user),
+                to = file.path("./users", user))
+
+    # file.rename(from = file.path(".", user_html),
+    #            to = file.path("./users/outputs", user_html))
+  }
+
+  message('Success! Student pages rendered successfully.')
+
+  utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
 }

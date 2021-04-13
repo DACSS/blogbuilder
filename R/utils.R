@@ -8,7 +8,7 @@ create_dacss_proj <- function(repo_link, directory) {
       repo_link,
       destdir = directory,
       fork = FALSE,
-      rstudio = FALSE,
+      rstudio = TRUE,
       open = TRUE
     )
   }
