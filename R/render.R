@@ -24,9 +24,9 @@ render_all_posts <- function() {
     change_yaml_matter(post, draft = TRUE, output_file = post)
   }
 
-  message('Success! Posts rendered successfully.')
-  utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
+  preview_site('Success! Posts rendered successfully.')
 }
+
 
 #' Renders all student pages
 #'
@@ -46,30 +46,24 @@ render_student_pages <- function() {
   # Iterates through each page
   for (user in users) {
     # Move files to root
-    file.rename(from = file.path('./users', user),
-                to = file.path('.', user))
+    move_files(source_path = './users', source_file = user)
   }
 
-  # Builds files
   message('Building files... Please wait...')
-  # Rename students
-  file.rename(from = file.path('.', 'students.Rmd'),
-              to = file.path('.', '_students.Rmd'))
-
+  # Rename students (ignores)
+  move_files(source_file = 'students.Rmd', dest_file = '_students.Rmd')
+  # Builds entire site (except for students)
   rmarkdown::render_site(quiet = TRUE)
-
-  # Rename students
-  file.rename(from = file.path('.', '_students.Rmd'),
-              to = file.path('.', 'students.Rmd'))
+  # Rename students back
+  move_files(source_file = '_students.Rmd', dest_file = 'students.Rmd')
 
   # Moves files back to user folder
   for (user in users) {
-    file.rename(from = file.path('.', user),
-                to = file.path('./users', user))
+    move_files(source_file = user, dest_path = './users')
   }
 
+  # Render students page
   rmarkdown::render_site(input = 'students.Rmd', quiet = TRUE)
 
-  message('Success! Student pages rendered successfully.')
-  utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
+  preview_site('Success! Student pages rendered successfully.')
 }

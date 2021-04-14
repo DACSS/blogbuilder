@@ -91,3 +91,18 @@ determine_spreadsheet <- function(spreadsheet) {
   else if (endsWith(spreadsheet, ".xlsx")) return("xlsx")
   else return(NULL)
 }
+
+# Move files to different directories
+move_files <- function(source_path = '.', dest_path = '.',
+                       source_file, dest_file = source_file) {
+
+  file.rename(from = file.path(source_path, source_file),
+              to = file.path(dest_path, dest_file))
+}
+
+# Previews site after a build
+preview_site <- function(success_message) {
+  message(success_message)
+  # Opens up index html (homepage) in browser
+  utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
+}

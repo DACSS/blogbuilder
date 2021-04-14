@@ -52,15 +52,13 @@ generate_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...)
 
   for (name in names) {
     file_name <- paste(name, '.Rmd', sep = '')
-    file_html <- paste(name, '.html', sep = '')
     message(paste(name, 'created'))
 
     # Create postcard R Markdown files for each student
     postcards::create_postcard(file = name, template = theme,
                                edit = FALSE, create_image = FALSE)
     # Move file to users folder
-    file.rename(from = file.path(".", file_name),
-                to = file.path("./users", file_name))
+    move_files(source_file = file_name, dest_path = './users')
   }
 
   message('Success. Student files created.')
