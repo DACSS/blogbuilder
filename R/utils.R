@@ -103,6 +103,7 @@ move_files <- function(source_path = '.', dest_path = '.',
 # Previews site after a build
 preview_site <- function(success_message) {
   message(success_message)
+  Sys.sleep(1)
   # Opens up index html (homepage) in browser
   utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
 }

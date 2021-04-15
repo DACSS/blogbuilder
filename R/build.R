@@ -1,12 +1,12 @@
-#' Render all blog posts
+#' Builds all blog posts
 #'
-#' Renders all drafted blog posts for a DACSS course site.
+#' Builds all drafted blog posts for a DACSS course site.
 #' The index page listing posts will be updated once
 #' the Distill blog is built. Assumes a DACSS blog R project
 #' is being used.
 #'
 #' @export
-render_all_posts <- function() {
+build_all_posts <- function() {
   all_post_files <- list.files('_posts', '*.Rmd', recursive = TRUE)
 
   # No post files found
@@ -28,13 +28,13 @@ render_all_posts <- function() {
 }
 
 
-#' Renders all student pages
+#' Builds all student pages
 #'
-#' Renders all student pages for a DACSS course site.
+#' Builds all student pages for a DACSS course site.
 #' Assumes the working directory is the GitHub repo
 #' project file.
 #' @export
-render_student_pages <- function() {
+build_student_pages <- function() {
   # Get path for all users
   all_pages <- list.files('users', '*.Rmd', recursive = TRUE)
   # Get users without path

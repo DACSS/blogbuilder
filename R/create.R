@@ -1,6 +1,6 @@
-#' Generate a new DACSS blog
+#' Builds a new DACSS blog
 #'
-#' Generates a new DACSS blog into a user-specified GitHub
+#' Builds a new DACSS blog into a user-specified GitHub
 #' repository. A generic DACSS blog will be
 #' created with a Distill and Postcards setup. Assumes the user
 #' has Git configured on their personal computer already.
@@ -8,7 +8,7 @@
 #' Simply follow the series of prompts when the function is called.
 #'
 #' @export
-generate_dacss_blog <- function() {
+create_course_blog <- function() {
   selection <- utils::menu(c('No', 'Yes'),
                            title = 'Do you have a DACSS course repo setup already?')
 
@@ -31,9 +31,9 @@ generate_dacss_blog <- function() {
 }
 
 
-#' Generate student postcards
+#' Builds student postcards
 #'
-#' Generates 'about me' pages for students in a Postcards setup. A spreadsheet
+#' Builds 'about me' pages for students in a Postcards setup. A spreadsheet
 #' of student information is taken as input -- with names as a primary
 #' requirement. Csv and xlsx formats are accepted.
 #' It will also generate list of student names in the Student page.
@@ -47,7 +47,7 @@ generate_dacss_blog <- function() {
 #' @param ... Additional arguments can be taken based on arguments for
 #' read_csv or read_xlsx.
 #' @export
-generate_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...) {
+create_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...) {
   names <- import_spreadsheet(spreadsheet, names_col, ...)
 
   for (name in names) {
