@@ -1,7 +1,7 @@
 Package: dacss.websites
 Type: Package
 Title: Create and Manage DACSS Course Websites
-Version: 1.0.2
+Version: 1.0.3
 Author: Hans Quiogue
 Maintainer: DACSS <dacss@umass.edu>
 Description: Easily generate and maintain Data Analytics and Computation 

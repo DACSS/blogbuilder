@@ -17,3 +17,12 @@ check_repo_syntax <- function(link) {
     stop(paste(link, 'is not a valid GitHub link'))
   }
 }
+
+# Line exists in .gitignore
+line_exists <- function(path, func) {
+  if (func(path)) {
+    return(!identical(grep(path, readLines('.gitignore')), integer(0)))
+  } else {
+    stop(paste(path, 'does not exist.'))
+  }
+}
