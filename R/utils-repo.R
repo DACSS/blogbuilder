@@ -26,3 +26,11 @@ line_exists <- function(path, func) {
     stop(paste(path, 'does not exist.'))
   }
 }
+
+# Check if env file exists. If it exists, the
+# environment variables are read in
+env_exists <- function() {
+  # If .env exists, read in file
+  line_exists('.env', file.exists)
+  readRenviron('.env')
+}
