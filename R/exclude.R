@@ -16,6 +16,16 @@ exclude_dir <- function(path) {
   exclude_template(path, dir.exists)
 }
 
+#' Exclude the docs folder
+#'
+#' Exclude the docs folder. Students will need to use
+#' this function to ensure they do not commit
+#' or push the docs folder to their forked repos.
+#' @export
+exclude_docs <- function() {
+  exclude_dir('docs/')
+}
+
 # The template for excluding files or directories
 exclude_template <- function(path, file_or_dir) {
   # Line in .gitignore does not exist
