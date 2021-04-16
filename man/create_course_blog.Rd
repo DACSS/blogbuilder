@@ -9,8 +9,8 @@ create_course_blog()
 \description{
 Builds a new DACSS blog into a user-specified GitHub
 repository. A generic DACSS blog will be
-created with a Distill and Postcards setup. Assumes the user
-has Git configured on their personal computer already.
-The repo will be generated if it has not been setup already.
-Simply follow the series of prompts when the function is called.
+created with a Distill and Postcards setup. Checks if the user
+has Git configured on their personal computer. The repo will be generated
+if it has not been setup already. Also asks the user to authenticate their
+Google account. Simply follow the series of prompts when the function is called.
 }

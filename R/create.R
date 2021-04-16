@@ -2,13 +2,17 @@
 #'
 #' Builds a new DACSS blog into a user-specified GitHub
 #' repository. A generic DACSS blog will be
-#' created with a Distill and Postcards setup. Assumes the user
-#' has Git configured on their personal computer already.
-#' The repo will be generated if it has not been setup already.
-#' Simply follow the series of prompts when the function is called.
+#' created with a Distill and Postcards setup. Checks if the user
+#' has Git configured on their personal computer. The repo will be generated
+#' if it has not been setup already. Also asks the user to authenticate their
+#' Google account. Simply follow the series of prompts when the function is called.
 #'
 #' @export
 create_course_blog <- function() {
+  # Check if Git is configured properly
+  gh_status()
+
+  # Menu for repo template
   selection <- utils::menu(c('No', 'Yes'),
                            title = 'Do you have a DACSS course repo setup already?')
 
@@ -23,11 +27,22 @@ create_course_blog <- function() {
   check_repo_syntax(repo_link)
   cat('GitHub repo: "', repo_link,'" retrieved successfully\n\n', sep = '')
 
+  # Checks Google authentication
+  google_status()
+  # Instructor form
+  instructor_form()
+
   # User inputs directory path
   directory <- directory_input()
 
   # New project
-  create_dacss_proj(repo_link, directory)
+  if (length(create_dacss_proj(repo_link, directory))) {
+    setwd(paste(directory, '/', strsplit(repo, "/+")[[1]][4], sep = '')) # [[1]][4] represents GitHub repo name
+
+    # Update course
+    row <- retrieve_row(repo_link, initialize = TRUE)
+    initialize_project(row)
+  }
 }
 
 
@@ -48,6 +63,8 @@ create_course_blog <- function() {
 #' read_csv or read_xlsx.
 #' @export
 create_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...) {
+  correct_env()
+
   names <- import_spreadsheet(spreadsheet, names_col, ...)
 
   for (name in names) {

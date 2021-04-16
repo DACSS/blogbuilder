@@ -1,21 +1,66 @@
 # Creates a new R project from a GitHub repo
 create_dacss_proj <- function(repo_link, directory) {
   if (length(directory) == 0L) {
-    stop('Directory is invalid.')
+    stop('Directory choosen is invalid.')
   # Creates new R project based on user repo
   } else {
-    usethis::create_from_github(
-      repo_link,
-      destdir = directory,
-      fork = FALSE,
-      rstudio = TRUE,
-      open = TRUE
+    out <- tryCatch(
+      usethis::create_from_github(
+        repo_link,
+        destdir = directory,
+        fork = FALSE,
+        rstudio = TRUE,
+        open = TRUE
+      ),
+      error = function(e) {
+        cat('There is an error with your GitHub configuration.\n',
+            'Use the command usethis::git_sitrep() to diagnose your issue.\n',
+            'If it is a email issue use usethis::use_git_config(user.name = "YOUR_ACCOUNT", user.email = "GITHUB_EMAIL")\n',
+            'If it is a token issue use usethis::gh_token_help()\n\n',
+            'After you have configured your account, please run this function again: create_course_blog().\n',
+            'You do not need to create a new repo or fill out the form again.\n\n', sep = '')
+        return(FALSE)
+      }
     )
+
+    if (length(out)) message('New R project created. Please wait before proceeding.')
+    return(out)
+  }
+}
+
+# Update project based on environment variables
+initialize_project <- function(data) {
+  message('\nInitializing project with your configurations...')
+
+  # For now, updates instructor name
+  update_instructor_name(data$`Instructor Name`)
+
+  message(paste('\n\nHere is your Student Forms:', data$`Student Forms`))
+  message('Head over to the link and restore the folder needed to store your responses.')
+  message('Project successfully configured. You may close this RStudio session now if you want.')
+}
+
+# Checks status with google
+google_status <- function() {
+  message('Checking if user is authenticated with Google...')
+
+  # User is not authenticated
+  if (!googlesheets4::gs4_has_token()) {
+    message('Your account needs to be configured.')
+    message('Please use your UMass email if possible.')
+    message('Redirecting to Google Authentication menu...\n')
+    Sys.sleep(2)
+
+    googlesheets4::gs4_auth()
+    google_status()
+  } else {
+    message('Your account is configured properly.\n')
   }
 }
 
 # Allows user input in selecting a directory
 directory_input <- function() {
+  message('Attempting to create a new R Project with course repo...')
   cat('Please choose a directory you would like to store the new R project.\n\n')
   Sys.sleep(1)
   directory <- easycsv::choose_dir()

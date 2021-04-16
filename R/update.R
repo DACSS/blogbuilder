@@ -17,6 +17,11 @@ update_course_semester <- function(semester) {
   update_env_template('SEMESTER', semester)
 }
 
+update_instructor_name <- function(name) {
+  update_env_template('INSTRUCTOR_NAME', name)
+  change_yaml_matter('instructor.Rmd', title = name, output_file = 'instructor.Rmd')
+}
+
 # Updates file
 update_env_template <- function(env, new_val) {
   if (typeof(new_val) != 'character') stop(paste(new_val, 'needs to be a string.'))
@@ -33,6 +38,8 @@ update_env_template <- function(env, new_val) {
     new_line <- paste(env, " = '", new_val, "'", sep = '')
     update_env_file(line, new_line)
     message(paste('Success!', env, 'is now:', new_val))
+  } else if (env_val == new_val) {
+    message(paste(env, 'is already set to:', new_val))
   } else {
     stop(paste(env, 'does not exist.'))
   }
