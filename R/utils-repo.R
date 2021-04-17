@@ -74,7 +74,8 @@ line_exists <- function(path, func, file = '.gitignore', env = FALSE) {
   if (func(path) || env == TRUE) {
     return(!identical(grep(path, readLines(file)), integer(0)))
   } else {
-    stop(paste(path, 'does not exist.'))
+    stop(paste(path, 'does not exist. Please update your working directory to the project repo.',
+              'You may also use reset_project_env() to correct the project environment.'))
   }
 }
 

@@ -7,6 +7,8 @@
 #'
 #' @export
 build_all_posts <- function() {
+  correct_env()
+
   all_post_files <- list.files('_posts', '*.Rmd', recursive = TRUE)
 
   # No post files found
@@ -35,6 +37,8 @@ build_all_posts <- function() {
 #' project file.
 #' @export
 build_student_pages <- function() {
+  correct_env()
+
   # Get path for all users
   all_pages <- list.files('users', '*.Rmd', recursive = TRUE)
   # Get users without path

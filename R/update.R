@@ -5,6 +5,7 @@
 #' @param title The title to replace the current course title with.
 #' @export
 update_course_title <- function(title) {
+  correct_env()
   update_env_template('COURSE_TITLE', title)
 }
 
@@ -14,6 +15,7 @@ update_course_title <- function(title) {
 #' @param semester The semester to replace the current semester with.
 #' @export
 update_course_semester <- function(semester) {
+  correct_env()
   update_env_template('SEMESTER', semester)
 }
 

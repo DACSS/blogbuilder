@@ -4,6 +4,7 @@
 #' @param path The path to the file you want to exclude
 #' @export
 exclude_file <- function(path) {
+  correct_env()
   exclude_template(path, file.exists)
 }
 
@@ -13,6 +14,7 @@ exclude_file <- function(path) {
 #' @param path The path to the directory you want to exclude
 #' @export
 exclude_dir <- function(path) {
+  correct_env()
   exclude_template(path, dir.exists)
 }
 
@@ -23,6 +25,7 @@ exclude_dir <- function(path) {
 #' or push the docs folder to their forked repos.
 #' @export
 exclude_docs <- function() {
+  correct_env()
   exclude_dir('docs/')
 }
 
