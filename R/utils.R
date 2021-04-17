@@ -32,30 +32,35 @@ create_dacss_proj <- function(repo_link, directory) {
 initialize_project <- function(data) {
   message('\nInitializing project with your configurations...')
 
-  # For now, updates instructor name
-  update_instructor_name(data$`Instructor Name`)
+  # Updates instructor information
+  update_instructor(data$`Instructor Name`, data$`Profile Picture`)
+  # TODO: Updates repo links
+  # update_repo_link(data$`Course Repo`)
 
   message(paste('\n\nHere is your Student Forms:', data$`Student Forms`))
   message('Head over to the link and restore the folder needed to store your responses.')
   message('Project successfully configured. You may close this RStudio session now if you want.')
 }
 
+# TODO: Rethink implementation...
 # Checks status with google
 google_status <- function() {
-  message('Checking if user is authenticated with Google...')
+  googlesheets4::gs4_deauth()
+
+  # message('Checking if user is authenticated with Google...')
 
   # User is not authenticated
-  if (!googlesheets4::gs4_has_token()) {
-    message('Your account needs to be configured.')
-    message('Please use your UMass email if possible.')
-    message('Redirecting to Google Authentication menu...\n')
-    Sys.sleep(2)
+  # if (!googlesheets4::gs4_has_token()) {
+  #  message('Your account needs to be configured.')
+  #  message('Please use your UMass email if possible.')
+  #  message('Redirecting to Google Authentication menu...\n')
+  #  Sys.sleep(2)
 
-    googlesheets4::gs4_auth()
-    google_status()
-  } else {
-    message('Your account is configured properly.\n')
-  }
+  #  googlesheets4::gs4_auth()
+  #  google_status()
+  #} else {
+  #  message('Your account is configured properly.\n')
+  #}
 }
 
 # Allows user input in selecting a directory
@@ -151,4 +156,21 @@ preview_site <- function(success_message) {
   Sys.sleep(1)
   # Opens up index html (homepage) in browser
   utils::browseURL(paste('file://', file.path(getwd(), '/docs/index.html'), sep = ''))
+}
+
+# Get google drive ID
+get_drive_id <- function(link) {
+  return(strsplit(link, 'id?=')[[1]][2])
+}
+
+# Get github pages link
+get_github_pages_link <- function(repo) {
+  split <- strsplit(repo, "/+")[[1]]
+
+  # Github.io repo
+  if (grepl(split[4], paste(split[3], '.github.io', sep = ''), fixed = TRUE)) {
+    return(paste(split[3], '.github.io', sep = ''))
+  } else {
+    return(paste(split[3], '.github.io/', split[4], sep = ''))
+  }
 }

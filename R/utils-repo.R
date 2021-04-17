@@ -43,8 +43,7 @@ initialize_env <- function(row) {
 
   # All env variables to create
   envs <- c('COURSE_REPO', 'COURSE_TITLE', 'SEMESTER', 'INSTRUCTOR_NAME',
-            'COURSE_DESC', 'SYLLABUS', 'INSTRUCTOR_DESC', 'INSTRUCTOR_PROF_PIC', 'INSTRUCTOR_LINKEDIN',
-            'INSTRUCTOR_TWITTER', 'INSTRUCTOR_GITHUB', 'INSTRUCTOR_EMAIL', 'STUDENT_FORMS')
+            'INSTRUCTOR_PROF_PIC', 'STUDENT_FORMS')
 
   # Links env variables and row data
   row <- row[, -1]
