@@ -55,11 +55,11 @@ create_course_blog <- function() {
 #'
 #' Builds 'about me' pages for students in a Postcards setup. A spreadsheet
 #' of student information is taken as input -- with names as a primary
-#' requirement. Csv and xlsx formats are accepted.
+#' requirement. Csv, xlsx, and Google Spreadsheet formats are accepted.
 #' It will also generate list of student names in the Student page.
 #' Assumes the working directory is based on the GitHub blog repo prokect.
 #'
-#' @param spreadsheet A csv or xlsx file containing student names.
+#' @param spreadsheet A csv, xlsx, or Google Spreadsheet file containing student names.
 #' @param names_col The column containing student names. Can be the column
 #' name or number.
 #' @param theme The template theme to create postcard pages with. The default

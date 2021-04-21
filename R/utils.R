@@ -120,6 +120,8 @@ import_spreadsheet <- function(spreadsheet, names_col, ...) {
     df <- readr::read_csv(spreadsheet, ...)
   } else if (type ==  'xlsx') {
     df <- readxl::read_xlsx(spreadsheet, ...)
+  } else if (type == 'Google Spreadsheet') {
+    df <- googlesheets4::read_sheet(spreadsheet)
   }
   else stop(paste(type, 'is not a supported file type.'))
 
@@ -135,10 +137,11 @@ import_spreadsheet <- function(spreadsheet, names_col, ...) {
 }
 
 
-# Determines if spread is an Excel file or CSV
+# Determines if spread is an Excel file, CSV, or Google Spreadsheet
 determine_spreadsheet <- function(spreadsheet) {
   if (endsWith(spreadsheet, ".csv")) return("csv")
   else if (endsWith(spreadsheet, ".xlsx")) return("xlsx")
+  else if (grepl('google', spreadsheet, fixed = TRUE)) return("Google Spreadsheet")
   else return(NULL)
 }
 

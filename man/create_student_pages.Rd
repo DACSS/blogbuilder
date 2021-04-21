@@ -7,7 +7,7 @@
 create_student_pages(spreadsheet, names_col, theme = "jolla", ...)
 }
 \arguments{
-\item{spreadsheet}{A csv or xlsx file containing student names.}
+\item{spreadsheet}{A csv, xlsx, or Google Spreadsheet file containing student names.}
 
 \item{names_col}{The column containing student names. Can be the column
 name or number.}
@@ -21,7 +21,7 @@ read_csv or read_xlsx.}
 \description{
 Builds 'about me' pages for students in a Postcards setup. A spreadsheet
 of student information is taken as input -- with names as a primary
-requirement. Csv and xlsx formats are accepted.
+requirement. Csv, xlsx, and Google Spreadsheet formats are accepted.
 It will also generate list of student names in the Student page.
 Assumes the working directory is based on the GitHub blog repo prokect.
 }
