@@ -43,33 +43,3 @@ update_repo_link <- function(repo) {
                                   (image = 'images/UMass White Workmark Horiz.png',
                                    href = link)))
 }
-
-# Updates file
-update_env_template <- function(env, new_val) {
-  if (typeof(new_val) != 'character') stop(paste(new_val, 'needs to be a string.'))
-
-  # Checks if .env exists
-  env_exists()
-  # Reads in env
-  env_val <- Sys.getenv(env)
-
-  # Read in env line is not empty (it exists)
-  if (nchar(env_val) > 0) {
-    # Updates env based on new value
-    line <- paste(env, " = '", env_val, "'", sep = '')
-    new_line <- paste(env, " = '", new_val, "'", sep = '')
-    update_env_file(line, new_line)
-    message(paste('Success!', env, 'is now:', new_val))
-  } else if (env_val == new_val) {
-    message(paste(env, 'is already set to:', new_val))
-  } else {
-    stop(paste(env, 'does not exist.'))
-  }
-}
-
-# Updates env file based on new line
-update_env_file <- function(line, new_line) {
-  new_file <- gsub(line, new_line, readLines('.env'))
-  writeLines(new_file, con = '.env')
-  readRenviron('.env')
-}

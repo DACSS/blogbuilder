@@ -6,7 +6,7 @@ generate_repo <- function() {
   Sys.sleep(1)
 
   # Opens browser to GitHub blog template link
-  utils::browseURL('https://github.com/DACSS/dacss_course_website/generate')
+  utils::browseURL('https://github.com/DACSS/course_blog_template/generate')
 }
 
 # Check gh status for a user
@@ -34,41 +34,6 @@ check_repo_syntax <- function(link) {
   }
 }
 
-# Generate env file
-initialize_env <- function(row) {
-  file.create('.env')
-  file_conn <- file('.env', 'a')
-
-  write('DACSS_COURSE_MGMT = "VALID"', file_conn, append = TRUE)
-
-  # All env variables to create
-  envs <- c('COURSE_REPO', 'COURSE_TITLE', 'SEMESTER', 'INSTRUCTOR_NAME',
-            'INSTRUCTOR_PROF_PIC', 'STUDENT_FORMS')
-
-  # Links env variables and row data
-  row <- row[, -1]
-  for (i in 1:length(row)) {
-    val <- retrieve_form_values(row, colnames(row)[i])
-    write(paste(envs[i], ' = "', val, '"', sep = ''), file_conn, append = TRUE)
-  }
-
-  close(file_conn)
-}
-
-# Check if project environment is correct
-correct_env <- function() {
-  env_exists()
-  env_val <- Sys.getenv('DACSS_COURSE_MGMT')
-
-  if (nchar(env_val) > 0) {
-    if (env_val != 'VALID') {
-      stop('Project environment is invalid. Please reset with: `reset_project_env()`')
-    }
-  } else {
-    stop('Project environment not found. Maybe the working directory is wrong?')
-  }
-}
-
 # Line exists in .gitignore
 line_exists <- function(path, func, file = '.gitignore', env = FALSE) {
   if (func(path) || env == TRUE) {
@@ -77,12 +42,4 @@ line_exists <- function(path, func, file = '.gitignore', env = FALSE) {
     stop(paste(path, 'does not exist. Please update your working directory to the project repo.',
               'You may also use reset_project_env() to correct the project environment.'))
   }
-}
-
-# Check if env file exists. If it exists, the
-# environment variables are read in
-env_exists <- function() {
-  # If .env exists, read in file
-  line_exists('.env', file.exists)
-  readRenviron('.env')
 }

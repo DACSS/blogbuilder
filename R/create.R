@@ -27,8 +27,8 @@ create_course_blog <- function() {
   check_repo_syntax(repo_link)
   cat('GitHub repo: "', repo_link,'" retrieved successfully\n\n', sep = '')
 
-  # Checks Google authentication
-  google_status()
+  # Uses deauthenticated state (only need read access)
+  googlesheets4::gs4_deauth()
   # Instructor form
   instructor_form()
 

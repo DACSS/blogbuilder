@@ -23,6 +23,7 @@ create_dacss_proj <- function(repo_link, directory) {
       }
     )
 
+    # Output is not empty, so project creation is a success
     if (length(out)) message('New R project created. Please wait before proceeding.')
     return(out)
   }
@@ -39,28 +40,9 @@ initialize_project <- function(data) {
 
   message(paste('\n\nHere is your Student Forms:', data$`Student Forms`))
   message('Head over to the link and restore the folder needed to store your responses.')
+  Sys.sleep(3)
   message('Project successfully configured. You may close this RStudio session now if you want.')
-}
-
-# TODO: Rethink implementation...
-# Checks status with google
-google_status <- function() {
-  googlesheets4::gs4_deauth()
-
-  # message('Checking if user is authenticated with Google...')
-
-  # User is not authenticated
-  # if (!googlesheets4::gs4_has_token()) {
-  #  message('Your account needs to be configured.')
-  #  message('Please use your UMass email if possible.')
-  #  message('Redirecting to Google Authentication menu...\n')
-  #  Sys.sleep(2)
-
-  #  googlesheets4::gs4_auth()
-  #  google_status()
-  #} else {
-  #  message('Your account is configured properly.\n')
-  #}
+  Sys.sleep(2)
 }
 
 # Allows user input in selecting a directory
