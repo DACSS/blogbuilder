@@ -1,11 +1,11 @@
-Package: dacss.websites
+Package: blogbuilder
 Type: Package
-Title: Create and Manage DACSS Course Websites
-Version: 1.0.9
+Title: Build DACSS Course Blogs
+Version: 1.0.10
 Author: Hans Quiogue
 Maintainer: DACSS <dacss@umass.edu>
 Description: Easily generate and maintain Data Analytics and Computation 
-    Social Science course websites created with Distill and Postcards.
+    Social Science course blogs created with R Markdown, Distill, and Postcards.
 License: CC BY-NC 4.0
 Imports:
     distill,
