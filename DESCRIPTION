@@ -1,7 +1,7 @@
 Package: blogbuilder
 Type: Package
 Title: Build DACSS Course Blogs
-Version: 0.0.11
+Version: 0.0.12
 Author: Hans Quiogue
 Maintainer: DACSS <dacss@umass.edu>
 Description: Easily generate and maintain Data Analytics and Computation 
