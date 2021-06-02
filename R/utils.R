@@ -38,7 +38,7 @@ initialize_project <- function(data) {
   # TODO: Updates repo links
   # update_repo_link(data$`Course Repo`)
 
-  message(paste('\n\nHere is your Student Forms:', data$`Student Forms`))
+  message(paste('\nHere is your Student Forms:', data$`Student Forms`))
   message('Head over to the link and restore the folder needed to store your responses.')
   Sys.sleep(3)
   message('Project successfully configured. You may close this RStudio session now if you want.')
@@ -103,6 +103,7 @@ import_spreadsheet <- function(spreadsheet, names_col, ...) {
   } else if (type ==  'xlsx') {
     df <- readxl::read_xlsx(spreadsheet, ...)
   } else if (type == 'Google Spreadsheet') {
+    googlesheets4::gs4_deauth()
     df <- googlesheets4::read_sheet(spreadsheet)
   }
   else stop(paste(type, 'is not a supported file type.'))
