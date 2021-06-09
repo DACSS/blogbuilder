@@ -35,6 +35,7 @@ create_course_blog <- function() {
   # User inputs directory path
   directory <- directory_input()
   repo_name <- strsplit(repo_link, "/+")[[1]][4] # [[1]][4] represents GitHub repo name
+  repo_name <- strsplit(repo_name, ".", fixed=TRUE)[[1]][1]
   new_proj_path <- paste(directory, '/', repo_name, sep = '')
 
   # Choosen directory has folder that exists
