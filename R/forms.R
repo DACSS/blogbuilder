@@ -1,8 +1,13 @@
 instructor_form <- function() {
-  message('Please fill out the following form: `https://forms.gle/CHPMt7zVWBrANTXdA`')
-  utils::browseURL('https://forms.gle/CHPMt7zVWBrANTXdA')
-  utils::menu(c('Proceed'), title = 'Press 1 once you are ready to proceed.')
-  message('Please wait.. Generating student forms..'); Sys.sleep(8);
+   choice <- utils::menu(c('No', 'Yes'),
+                           title = 'Have you filled in the form for this course previously?')
+   if (choice == 1) {
+    message('Please fill out the following form: `https://forms.gle/CHPMt7zVWBrANTXdA`')
+    utils::browseURL('https://forms.gle/CHPMt7zVWBrANTXdA')
+    utils::menu(c('Proceed'), title = 'Press 1 once you have filled in the form.')
+    message('Please wait.. Generating student forms..');
+   }
+   Sys.sleep(8);
 }
 
 retrieve_student_form <- function(repo) {
