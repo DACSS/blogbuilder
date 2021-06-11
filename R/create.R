@@ -47,7 +47,7 @@ create_course_blog <- function() {
 
     # Update course
     row <- retrieve_row(repo_link, initialize = TRUE)
-    initialize_project(row)
+    initialize_project(row[1:1, ])  #Selecting the first row
   }
 }
 
