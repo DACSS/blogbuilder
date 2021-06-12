@@ -35,6 +35,7 @@ create_course_blog <- function() {
   # User inputs directory path
   directory <- directory_input()
   repo_name <- strsplit(repo_link, "/+")[[1]][4] # [[1]][4] represents GitHub repo name
+  repo_name <- strsplit(repo_name, ".", fixed=TRUE)[[1]][1]
   new_proj_path <- paste(directory, '/', repo_name, sep = '')
 
   # Choosen directory has folder that exists
@@ -46,7 +47,7 @@ create_course_blog <- function() {
 
     # Update course
     row <- retrieve_row(repo_link, initialize = TRUE)
-    initialize_project(row)
+    initialize_project(row[1:1, ])  #Selecting the first row
   }
 }
 
