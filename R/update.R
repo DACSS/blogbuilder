@@ -19,8 +19,14 @@ update_course_semester <- function(semester) {
   update_env_template('SEMESTER', semester)
 }
 
-# TODO: Documentation and export
-update_instructor <- function(name, prof_pic) {
+#' Update Course Instructor name
+#'
+#' Update Course Instructor name in the homepage.
+#'
+#' @param name The name to replace the current course name with.
+#' @param prof_pic To replace profile pic. Optional.
+#' @export
+update_course_instructor <- function(name, prof_pic = c()) {
   # Update instructor name
   update_env_template('INSTRUCTOR_NAME', name)
   change_yaml_matter('instructor.Rmd', title = name, output_file = 'instructor.Rmd')
