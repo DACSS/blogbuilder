@@ -48,7 +48,7 @@
   
   - Press the link to check the course blog and see if everything is as you wished it to be.  
 
-_Note_: This is a one-time process. From now on, everytime you push any changes to the Github repository, the course blog will reflelect those changes.  
+  _Note_: This is a one-time process. From now on, everytime you push any changes to the Github repository, the course blog will reflelect those changes automatically.  
 
 - Lastly, feel free to check out all the functions mentioned in this documentation. While they are not necesarry to set up the blog, some of them may come in handy for certain auxiliary tasks or in case you are met with an error at some point of the process.
 
