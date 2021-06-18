@@ -15,6 +15,7 @@
 - [Update](#update)
   - [Update Course Title](#update-course-title)
   - [Update Course Semester](#update-course-semester)
+  - [Update Course Instructor](#update-course-instructor)
 - [Get Student Form](#get-student-form)
 - [Reset](#reset)
   - [Reset Project Environment](#reset-project-environment)
@@ -164,6 +165,14 @@ blogbuilder::update_course_title('NAME OF NEW TITLE')
 ```r
 blogbuilder::update_course_title('New Semester')
 ```
+
+#### Update Course Instructor
+```r
+blogbuilder::update_course_instructor('New Name')
+```
+Arguments:  
+```name```: The name to replace the current instructor name with.  
+```prof_pic```: Link to your new profile picture. Optional.
 
 
 ## Get Student Form
