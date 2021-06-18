@@ -115,7 +115,7 @@ Choose one from the commands above. Make sure to replace `[your_name]` with your
 
 For example:
 ```r
-postcards::create_postcard(file = 'users/Hans Qiogue', template = "jolla")
+postcards::create_postcard(file = 'users/Hans Qiogue.Rmd', template = "jolla")
 ```
 
 A file will be generated for your about page. Be sure to edit the page to your liking. You may view what your page looks like by knitting the page as `postcards`.
