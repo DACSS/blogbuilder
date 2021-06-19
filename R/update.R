@@ -26,13 +26,13 @@ update_course_semester <- function(semester) {
 #' @param name The name to replace the current instructor name with.
 #' @param prof_pic To replace profile pic. Optional.
 #' @export
-update_course_instructor <- function(name, prof_pic = c()) {
+update_course_instructor <- function(name, prof_pic = NULL) {
   # Update instructor name
   update_env_template('INSTRUCTOR_NAME', name)
   change_yaml_matter('instructor.Rmd', title = name, output_file = 'instructor.Rmd')
 
   # Update instructor profile picture if inputted
-  if (length(prof_pic)) {
+  if(!is.null(prof_pic)) {
     update_env_template('INSTRUCTOR_PROF_PIC', prof_pic)
     base_url <- 'https://drive.google.com/uc?export=view&id='
     picture <- paste(base_url, get_drive_id(prof_pic), sep = '')
