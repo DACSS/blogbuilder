@@ -4,7 +4,7 @@
 \alias{update_course_instructor}
 \title{Update Course Instructor name}
 \usage{
-update_course_instructor(name, prof_pic = c())
+update_course_instructor(name, prof_pic = NULL)
 }
 \arguments{
 \item{name}{The name to replace the current instructor name with.}

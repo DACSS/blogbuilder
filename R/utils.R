@@ -35,8 +35,7 @@ initialize_project <- function(data) {
 
   # Updates instructor information
   update_course_instructor(data$`Instructor Name`, data$`Profile Picture`)
-  # TODO: Updates repo links
-  # update_repo_link(data$`Course Repo`)
+  update_course_repo(data$`Course Repo`)
 
   message(paste('\nHere is your Student Forms:', data$`Student Forms`))
   message('Head over to the link and restore the folder needed to store your responses.')
