@@ -7,7 +7,7 @@
 update_course_instructor(name, prof_pic = c())
 }
 \arguments{
-\item{name}{The name to replace the current course name with.}
+\item{name}{The name to replace the current instructor name with.}
 
 \item{prof_pic}{To replace profile pic. Optional.}
 }
