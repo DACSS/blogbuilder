@@ -34,7 +34,7 @@ initialize_project <- function(data) {
   message('\nInitializing project with your configurations...')
 
   # Updates instructor information
-  update_instructor(data$`Instructor Name`, data$`Profile Picture`)
+  update_course_instructor(data$`Instructor Name`, data$`Profile Picture`)
   # TODO: Updates repo links
   # update_repo_link(data$`Course Repo`)
 
