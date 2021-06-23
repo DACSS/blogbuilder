@@ -129,21 +129,21 @@ You can update various elements of the blog through the following commands.
 
 #### Update Course Title
 ```r
-blogbuilder::update_course_title('NAME OF NEW TITLE')
+blogbuilder::update_course_title('New Title')
 ```
 
 #### Update Course Semester
 ```r
-blogbuilder::update_course_title('New Semester')
+blogbuilder::update_course_semester('New Semester')
 ```
 
 #### Update Course Instructor
 ```r
-blogbuilder::update_course_instructor('New Name')
+blogbuilder::update_course_instructor('New Instructor Name')
 ```
 Arguments:  
 ```name```: The name to replace the current instructor name with.  
-```prof_pic```: Link to your new profile picture. Optional.
+_Optional_:  ```prof_pic```: Link to your new profile picture.
 
 
 ## Get Student Form
