@@ -7,6 +7,11 @@
 update_course_title <- function(title) {
   correct_env()
   update_env_template('COURSE_TITLE', title)
+
+  yml_content <- yaml::read_yaml('_site.yml')
+  readRenviron('.env')
+  yml_content[2] = Sys.getenv('COURSE_TITLE')
+  yaml::write_yaml(yml_content, "_site.yml")
 }
 
 #' Update course semester
@@ -52,7 +57,8 @@ update_course_repo <- function(link = NULL) {
     update_env_template('COURSE_REPO', link)
 
   # Updates the github repo (top right corner github icon's link) on the blog with the repo link of this course
-  a <- yaml::read_yaml('_site.yml')
-  a$navbar$right[[4]]$href = Sys.getenv('COURSE_REPO')
-  yaml::write_yaml(a, "_site.yml")
+  yml_content <- yaml::read_yaml('_site.yml')
+  readRenviron('.env')
+  yml_content$navbar$right[[4]]$href = Sys.getenv('COURSE_REPO')
+  yaml::write_yaml(yml_content, "_site.yml")
 }

@@ -1,6 +1,5 @@
 # DOCUMENTATION
 ## Contents
-- [Instructor Workflow](#instructor-workflow)
 - [Prerequisites](#prerequisites)
 - [Git and RStudio Setup](#git-and-rstudio-setup)
 - [Installation](#installation)
@@ -22,39 +21,11 @@
 - [Exclude](#exclude)
   - [Exclude Directory](#exclude-directory)
   - [Exclude File](#exclude-file)
-
-
-## Instructor Workflow
-- Read and follow all the instructions in this documentation while scrolling down from [prerequisites](#prerequisites) to [building posts](#build-all-posts) (inclusive).
-- After setting up a course blog, you have access to all the RMarkdown files which you can manually edit to reflect changes in the blog.
-- Once you have all the edits in place, you need to push the changes to the remote Github repository. Note: If you have no experience with Github, we have a greate resource [here](https://youtu.be/we6m-B0ioFk) that we encourage you to use.
-- Now, you need to publish the website on [Github Pages](https://pages.github.com/) to make it available for everyone to see. Follow through the directions below to achieve that:
-  - Go to the course repository on Github and open settings.
-
-  ![GIT-1](https://i.imgur.com/qxJWZvU.png)  
-  
-  - Press on the `Pages` tab.  
-
-  ![GIT-2](https://i.imgur.com/Js60plT.png)  
-  
-  - Then follow the steps below:  
-
-  ![GIT-1](https://i.imgur.com/DVmzcgP.png)  
-  
-  ![GIT-4](https://i.imgur.com/lkU3BIw.png)  
-  
-  - You should be all set up and get a screen like this:  
- 
-  ![GIT-5](https://i.imgur.com/qKHA23y.png)  
-  
-  - Press the link to check the course blog and see if everything is as you wished it to be.  
-
-  _Note_: This is a one-time process. From now on, everytime you push any changes to the Github repository, the course blog will reflelect those changes automatically.  
-
-- Lastly, feel free to check out all the functions mentioned in this documentation. While they are not necesarry to set up the blog, some of them may come in handy for certain auxiliary tasks or in case you are met with an error at some point of the process.
+- [Instructor Workflow](#instructor-workflow)
 
 ## Prerequisites
-Note: You can see [Git and RStudio Setup](#git-and-rstudio-setup) to satisfy all the following prerequisites:
+*Note*: You can see [Git and RStudio Setup](#git-and-rstudio-setup) if you have never used Github with RStudio and satisfy all the prerequisites mentioned here.    
+
 - This package requires you to have [Git](https://git-scm.com/) configured on your computer.
 - You are required to have a [Github](https://github.com/) account.
 - You need to know the basics of git with RStudio.
@@ -70,7 +41,7 @@ Note: You can see [Git and RStudio Setup](#git-and-rstudio-setup) to satisfy all
 
 
 ## Installation
-Note: This is a first time task only and you may skip this part if you have devtools and blogbuilder already installed.
+Note: This is a first time task only and you may skip this part if you have the packages mentioned below already installed.
 
 
 #### Install distill
@@ -203,3 +174,32 @@ blogbuilder::exclude_dir('/path/to/dir')
 ``` r
 blogbuilder::exclude_file('/path/to/file')
 ```
+
+## Instructor Workflow
+- Read and follow all the instructions in this documentation while scrolling down from [prerequisites](#prerequisites) to [building posts](#build-all-posts) (inclusive).
+- After setting up a course blog, you have access to all the RMarkdown files which you can manually edit to reflect changes in the blog.
+- Once you have all the edits in place, you need to push the changes to the remote Github repository. Note: If you have no experience with Github, we have a great resource [here](https://youtu.be/we6m-B0ioFk) that we encourage you to use.
+- Now, you need to publish the website on [Github Pages](https://pages.github.com/) to make it available for everyone to see. Follow through the directions below to achieve that:
+  - Go to the course repository on Github and open settings.
+
+  ![GIT-1](https://i.imgur.com/qxJWZvU.png)  
+  
+  - Press on the `Pages` tab.  
+
+  ![GIT-2](https://i.imgur.com/Js60plT.png)  
+  
+  - Then follow the steps below:  
+
+  ![GIT-1](https://i.imgur.com/DVmzcgP.png)  
+  
+  ![GIT-4](https://i.imgur.com/lkU3BIw.png)  
+  
+  - You should be all set up and get a screen like this:  
+ 
+  ![GIT-5](https://i.imgur.com/qKHA23y.png)  
+  
+  - Press the link to check the course blog and see if everything is as you wished it to be.  
+
+  _Note_: This is a one-time process. From now on, everytime you push any changes to the Github repository, the course blog will reflelect those changes automatically.  
+
+- Lastly, feel free to check out all the functions mentioned in this documentation. While they are not necesarry to set up the blog, some of them may come in handy for certain auxiliary tasks or in case you are met with an error at some point of the process.
