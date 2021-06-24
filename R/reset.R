@@ -27,6 +27,14 @@ reset_project_env <- function() {
       if (length(row)) {
         file.remove('.env')
         initialize_env(row)
+
+        #The env has been changed, reflect those changes in the site.
+        #----------------
+        update_course_title(Sys.getenv('COURSE_TITLE'))
+        update_course_semester(Sys.getenv('SEMESTER'))
+        update_course_instructor(Sys.getenv('INSTRUCTOR_NAME'), Sys.getenv('INSTRUCTOR_PROF_PIC'))
+        #----------------
+
         message('Success. Environment reset.')
       # Invalid row
       } else {

@@ -1,9 +1,18 @@
 Package: blogbuilder
 Type: Package
 Title: Build DACSS Course Blogs
-Version: 0.1.0
-Author: Hans Quiogue
-Maintainer: DACSS <dacss@umass.edu>
+Version: 0.1.1
+Authors@R: 
+    c(person(given = "Hans",
+             family = "Quiogue",
+             role = "aut"),
+      person(given = "Naman",
+             family = "Ranawat",
+             role = c("aut", "cre"),
+             email = "nranawat@umass.edu"),
+      person(given = "DACSS",
+             role = c("cph", "fnd"),
+             email = "dacss@umass.edu"))
 Description: Easily generate and maintain Data Analytics and Computation 
     Social Science course blogs created with R Markdown, Distill, and Postcards.
 License: CC BY-NC 4.0
