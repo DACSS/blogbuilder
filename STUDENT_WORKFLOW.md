@@ -44,7 +44,7 @@ You will need to have the `devtools`, `blogbuilder`, `distill` and `postcards` p
 Make sure you install the packages with `install.packages` and `devtools` with the commands below:
 
 ``` r
-installl.packages('devtools')
+install.packages('devtools')
 devtools::install_github('DACSS/blogbuilder')
 devtools::install_github("rstudio/distill")
 install.packages('postcards')
