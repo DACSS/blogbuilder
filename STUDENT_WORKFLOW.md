@@ -46,7 +46,7 @@ Make sure you install the packages with `install.packages` and `devtools` with t
 ``` r
 installl.packages('devtools')
 devtools::install_github('DACSS/blogbuilder')
-install.packages('distill')
+devtools::install_github("rstudio/distill")
 install.packages('postcards')
 ```
 
@@ -75,10 +75,10 @@ You can create a post by using the `create_post` function from Distill. It takes
 For example I can do:
 
 ``` r
-distill::create_post(title = 'iris', draft = TRUE)
+distill::create_post(title = 'iris', author = "Your Name", draft = TRUE)
 ```
 
-The package will easily generate an R Markdown file for you to edit and use as a template for your post. Now, you can edit the file to your liking.
+The command will automatically generate an R Markdown file for you to edit and use as a template for your post. Now, you can edit the file to your liking.
 
 Note: I would recommend updating the header description and add categories:
 
@@ -92,11 +92,11 @@ Once you are done, simply knit the file as a `distill_article`.
 
 You will recieve an output preview of what your post will look like.
 
-Once you are done commit and push your changes to your repo.
+Once you are done, commit and push your changes to your repo.
 
 ## Creating an About Me Page with Postcards
 
-You can create an About Me page by using the `create_postcard` function. If your instructor has already create a page for you, you may skip this step.
+You can create an About Me page by using the `create_postcard` function. If your instructor has already created a page for you, you may skip this step.
 
 Here are [examples](https://github.com/seankross/postcards#the-templates) of themes you can use.
 
