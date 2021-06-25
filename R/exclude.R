@@ -41,6 +41,6 @@ exclude_template <- function(path, file_or_dir) {
     message(paste(path, 'excluded successfully.'))
     # Line exists
   } else {
-    stop(paste(path, 'is already excluded.'))
+    message(paste(path, 'is already excluded.'))
   }
 }
