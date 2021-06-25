@@ -8,6 +8,7 @@
   - [Install devtools](#install-devtools)
   - [Install blogbuilder](#install-blogbuilder)
 - [Setup a new DACSS Course Blog](#setup-a-new-dacss-course-blog)
+- [Toggle to Instructor Mode](#toggle-to-instructor-mode)
 - [Create Student Pages](#create-student-pages)
 - [Build Student Pages](#build-student-pages)
 - [Build All Posts](#build-all-posts)
@@ -80,6 +81,19 @@ Run the following command in the Rstudio console:
 blogbuilder::create_course_blog()
 ```
 Then, simply follow the instructions displayed in the console to make a new course blog.
+
+
+## Toggle to Instructor Mode
+
+You are required to toggle to instructor mode so that you can carry out the blog management tasks seamlessly.
+
+You may easily do this with the following command:
+
+``` r
+blogbuilder::iaminstructor()
+```
+
+This command needs to be run everytime you pull changes from the Github repository.
 
 
 ## Create Student Pages
