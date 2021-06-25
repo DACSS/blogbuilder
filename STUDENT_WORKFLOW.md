@@ -3,7 +3,7 @@
 - [Git and RStudio Setup](#git-and-rstudio-setup)
 - [Forking the Repository](#forking-the-repository)
 - [R Package Requirements](#r-package-requirements)
-- [Exclude the Docs Folder](#excluding-the-docs-folder)
+- [Toggle to Student Mode](#toggle-to-student-mode)
 - [Create a New Post](#creating-a-new-post-with-distill)
 - [Create an About Me Page](#creating-an-about-me-page-with-postcards)
 - [Making a Pull Request](#making-a-pull-request-to-the-main-repo)
@@ -58,14 +58,14 @@ library(distill)
 library(postcards)
 ```
 
-## Excluding the Docs Folder
+## Toggle to Student Mode
 
-You are required to exclude the docs folder (On the other hand, instructors are required to *include* it). Doing so will avoid Git merge conflicts in the future with other students or the instructor.
+You are required to toggle to student mode so as to prevent future merge conflicts on the instructor's side.
 
 You may easily do this with the following command:
 
 ``` r
-blogbuilder::exclude_docs()
+blogbuilder::iamstudent()
 ```
 
 ## Creating a New Post with Distill
