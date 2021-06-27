@@ -86,3 +86,57 @@ create_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...) {
 
   message('Success. Student files created.')
 }
+
+
+
+#' Create Lessons
+#'
+#' Creates lessons when the course tutorials' folder is provided in the root of the course repository.
+#'
+#' @export
+create_lessons <- function() {
+  content <- c()
+
+  # Get all the *.dcf files which have the name and links to the shiny sites for the learnr tutorials
+  dcf_files <- list.files(pattern = "\\.dcf$", recursive = TRUE)
+
+  if (length(dcf_files) > 0) {
+    for (path in dcf_files) {
+
+      # Read the content in the file and get the url and name fields
+      data <- read.dcf(path, fields = c('url','name'))
+      name <- data[2]
+      url <- data[1]
+
+      # Make html embed files for all the tutorials
+      html_content <- paste("<embed src=\"", url, "\" style=\"width:100%; height: 100%;\">", sep = "")
+      html_file_name <- paste("docs/", name, ".html", sep = "")
+
+      c <- file(html_file_name, "w")
+      writeLines(html_content, c)
+      close(c)
+
+      # Add a new line (for the new shiny site) to the vector - content
+      line <- paste('- [', name, '](', name, '.html', ')', sep = '')
+      content <- c(content, line)
+
+    }
+
+    #Arrange content for the lessons.Rmd file
+    yaml_header <- c("---", "title: \"Lessons\"" , "site: distill::distill_website", "---", "")
+    rmd_file <- c(yaml_header, content)
+
+    # Write the lessons.Rmd file
+    fileConn <- file("lessons.Rmd", "w")
+    writeLines(rmd_file, fileConn)
+    close(fileConn)
+
+    message('Succssfully created the lessons!')
+  } else {
+    message('Creating lessons unsuccessful! Please put the tutorials folder in the root directory and re-run this function.')
+  }
+
+
+}
+
+
