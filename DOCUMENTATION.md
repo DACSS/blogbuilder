@@ -97,7 +97,7 @@ This command needs to be run everytime you pull changes from the Github reposito
 
 
 ## Create Student Pages
-Create 'About Me' pages for the students based on the provided .xlsx or .csv file.
+Create 'About Me' pages for the students based on the provided .xlsx or .csv file. Instructor needs to put the students excel/csv file inside the course folder and provide the function below with its path in the course directory and the column name or number of the 'Name' column. The function will grab all the student names and make a template 'About Me' page for all of them which they can later edit as they see fit. Also, the instructor can choose to skip this step when setting up the course blog and let the students create their own 'About Me' pages themselves. The instruction for this are provided in the Student Workflow.
 ```r
 blogbuilder::create_student_pages(spreadsheet = 'path/to/students.csv', names_col = 1)
 
