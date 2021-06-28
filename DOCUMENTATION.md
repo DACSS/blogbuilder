@@ -105,6 +105,9 @@ blogbuilder::create_student_pages(spreadsheet = 'path/to/students.csv', names_co
 
 Running the example above reads in a spreadsheet called 'students.csv' and the student names is directed to be in the first column of the spreadsheet. 
 
+
+*Optional: Below, we dive into this function. This is just extra information which might come in handy for more personalization but, if have already set up the student pages with the `create_student_pages()` function above, you may safely skip to the next step.*
+
 This function takes in multiple arguments:
 
 - spreadsheet (required): The path to the spreadsheet. CSV and xlsx formats are accepted.
