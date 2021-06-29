@@ -106,20 +106,20 @@ Here are [examples](https://github.com/seankross/postcards#the-templates) of the
 
 ``` r
 # Four different themes you can use. Choose only one!
-postcards::create_postcard(file = 'users/[your_name].Rmd', template = "jolla")
+postcards::create_postcard(file = 'users/[your-name].Rmd', template = "jolla")
 
-postcards::create_postcard(file = 'users/[your_name].Rmd', template = "jolla-blue")
+postcards::create_postcard(file = 'users/[your-name].Rmd', template = "jolla-blue")
 
-postcards::create_postcard(file = 'users/[your_name].Rmd', template = "trestles")
+postcards::create_postcard(file = 'users/[your-name].Rmd', template = "trestles")
 
-postcards::create_postcard(file = 'users/[your_name].Rmd', template = "onofre")
+postcards::create_postcard(file = 'users/[your-name].Rmd', template = "onofre")
 ```
 
-Choose one from the commands above. Make sure to replace `[your_name]` with your name (without the square brackets surrounding it).
+Choose one from the commands above. Make sure to replace `[your-name]` with your name (without the square brackets surrounding it and raplace space or any other special character with '-').
 
 For example:
 ```r
-postcards::create_postcard(file = 'users/Hans Qiogue.Rmd', template = "jolla")
+postcards::create_postcard(file = 'users/Hans-Qiogue.Rmd', template = "jolla")
 ```
 
 A file will be generated for your about page. Be sure to edit the page to your liking. You may view what your page looks like by knitting the page as `postcards`.
