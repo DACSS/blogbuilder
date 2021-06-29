@@ -74,6 +74,7 @@ create_student_pages <- function(spreadsheet, names_col, theme = "jolla", ...) {
   names <- import_spreadsheet(spreadsheet, names_col, ...)
 
   for (name in names) {
+    name <- gsub("[^[:alnum:]]", "-", name)
     file_name <- paste(name, '.Rmd', sep = '')
     message(paste(name, 'created'))
 
@@ -131,12 +132,20 @@ create_lessons <- function() {
     writeLines(rmd_file, fileConn)
     close(fileConn)
 
+    # Add lessons tab to the navbar
+    yml_content <- yaml::read_yaml('_site.yml')
+    if (yml_content$navbar$right[[4]][[1]] != "Lessons") {
+      yml_content$navbar$right <- append(yml_content$navbar$right, list(list(text='Lessons', href = 'lessons.html')), 3)
+      yaml::write_yaml(yml_content, "_site.yml")
+      message("Lessons tab created!")
+    } else {
+      message("You alreaady have the lessons tab. Skipping this step...")
+    }
+
     message('Succssfully created the lessons!')
   } else {
     message('Creating lessons unsuccessful! Please put the tutorials folder in the root directory and re-run this function.')
   }
-
-
 }
 
 
