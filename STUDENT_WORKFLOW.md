@@ -132,7 +132,7 @@ Like before, once you are done, commit and push all the new generated and modifi
 
 ## Making a Pull Request to the Main Repo
 
-Once you are done with everything, you may submit a pull request to the main repo. Head over the [repo page](https://github.com/DACSS/dacss_course_website) and click the `Pull requests` button.
+Once you are done with everything, you may submit a pull request to the main repo (from where you forked the repo on your account). Head over to the blog repo and click the `Pull requests` button.
 
 ![pr](https://raw.githubusercontent.com/DACSS/course_blog_template/main/_guide/images/pr.png)
 
