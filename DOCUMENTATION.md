@@ -10,6 +10,7 @@
 - [Setup a new DACSS Course Blog](#setup-a-new-dacss-course-blog)
 - [Toggle to Instructor Mode](#toggle-to-instructor-mode)
 - [Create Student Pages](#create-student-pages)
+- [Create Lessons Page](#create-lessons-page)
 - [Build Student Pages](#build-student-pages)
 - [Build All Posts](#build-all-posts)
 - [Update](#update)
@@ -124,12 +125,25 @@ blogbuilder::create_student_pages(spreadsheet = 'path/to/students.xlsx',
 The example above reads in the student names from the column name, 'name', in the sheet 'data' from 'students.xlsx' file in the 'path/to/' directory rooted in the course folder.
 
 
+## Create Lessons Page
+_Note_ : This is an optional step which can be used to auto-generate the 'Lessons' tab (near the 'About' and 'Students' tabs) and the corresponding webpage to integrate the course learnr tutorials on your course blog. You must have a folder containing the course's learnr tutorials and these learn tutorials need to be published on Shiny. We recommend that you structure your tutorials' folder similar to the repository [here](https://github.com/DACSS/601_Tutorials).
+
+Steps to follow:
+- Copy the course tutorial folder and paste it in the `docs` folder in the course blog's directory. 
+- Run the command ```blogbuilder::create_lessons()```.
+- View the `lessons.Rmd` file and see if any changes need to be made.
+- You can then knit the file and see the resulting web page to decide if it is satisfactory.
+
+
+
 ## Build Student Pages
 Build all student pages with the command:
 ``` r
 blogbuilder::build_student_pages()
 ```
 This command renders all the student pages (ie. builds HTML files from the RMarkdown student pages) so it is to be run everytime any changes are made to any of the student pages (or if new student pages are added).
+
+Note: This function renders the whole course blog other than the posts so run it anytime you make any changes other than those related to posts.
 
 
 ## Build All Posts
