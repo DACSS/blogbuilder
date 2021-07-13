@@ -124,7 +124,7 @@ postcards::create_postcard(file = 'users/Hans-Qiogue.Rmd', template = "jolla")
 
 A file will be generated for your about page. Be sure to edit the page to your liking. You may view what your page looks like by knitting the page as `postcards`.
 
-I would recommend storing your images in the `images` folder for consistency.
+You can store your image in the `users` folder and use the image name as the value for the image field in your rmarkdown file's metadata.
 
 ![postcards](https://raw.githubusercontent.com/DACSS/course_blog_template/main/_guide/images/postcards.png)
 
