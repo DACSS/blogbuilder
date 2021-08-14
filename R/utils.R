@@ -186,6 +186,7 @@ initialize_env <- function(row) {
 # Check if project environment is correct
 correct_env <- function() {
   env_exists()
+  check_mode()
   env_val <- Sys.getenv('DACSS_COURSE_MGMT')
 
   if (nchar(env_val) > 0) {
@@ -194,6 +195,17 @@ correct_env <- function() {
     }
   } else {
     stop('Project environment not found. Maybe the working directory is wrong?')
+  }
+}
+
+# Check if project is in student or instructor mode
+check_mode <- function() {
+  lines <- readLines(".gitignore")
+  if (length(lines) == 48) {
+    message('Instructor Mode Pass...')
+  }
+  else {
+    message('Project is currently in Student mode. If you are an instructor, please run blogbuilder::iaminstructor()')
   }
 }
 
