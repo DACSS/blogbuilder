@@ -14,4 +14,4 @@ devtools::install_github('DACSS/blogbuilder')
 
 ## Package Manual
 
-You may view the R package manual and documentation in the [`man` folder](https://github.com/DACSS/blogbuilder/tree/main/man#readme).
+You may view the R package manual and documentation [here](https://github.com/DACSS/blogbuilder/blob/main/DOCUMENTATION.md).
