@@ -32,6 +32,9 @@ create_course_blog <- function() {
   # Instructor form
   instructor_form()
 
+  # Store the URL for the google sheets linked to the form in local.txt file
+  store_posts_sheet()
+
   # User inputs directory path
   directory <- directory_input()
   repo_name <- strsplit(repo_link, "/+")[[1]][4] # [[1]][4] represents GitHub repo name

@@ -101,3 +101,46 @@ build_student_pages <- function() {
 
   preview_site('Success! Student pages rendered successfully.')
 }
+
+
+
+#' Import student posts from their blogs
+#'
+#' Import student posts from their blogs.
+#' @export
+import_posts <- function() {
+  # "https://docs.google.com/spreadsheets/d/1BzpTglVbQ331UUJXlh3K3fOVGN0aaHh7s2CHfGwzTfw/edit?resourcekey#gid=311435407"
+
+  sheets_link = readLines("local.txt")
+  posts = googlesheets4::read_sheet(sheets_link, sheet="Form Responses 1")
+
+  for (i in seq_along(posts$`Email Address`)) {
+    tryCatch(
+      expr = {
+        row <- posts[i, ]
+
+        if(is.na(row$`Email Address`)) {
+          next
+        }
+
+        email <- row$`Email Address`
+        url <- row$URL
+
+        distill::import_post(url, overwrite = TRUE)
+      },
+      error = function(e){
+        # Ideally email the students that their post failed as well.
+        message(paste0('Error with post link ', row$URL, ' by ', row$`Email Address`))
+        print(e)
+      },
+      warning = function(w){
+        message('Caught a warning!')
+        print(w)
+      }
+    )
+  }
+
+  posts = posts[0, ]
+  googlesheets4::write_sheet(posts, sheets_link, sheet = 'Form Responses 1')
+}
+

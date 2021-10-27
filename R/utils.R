@@ -246,3 +246,11 @@ update_env_file <- function(line, new_line, initial = TRUE) {
   writeLines(new_file, con = '.env')
   readRenviron('.env')
 }
+
+# Store the URL for the google sheets linked to the form in local.txt file
+store_posts_sheet <- function() {
+  sheets_url <- readline('Please paste your posts URL sheets\' link and hit enter: ')
+  fileConn<-file("local.txt")
+  writeLines(sheets_url, fileConn)
+  close(fileConn)
+}
