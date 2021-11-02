@@ -68,7 +68,6 @@ update_course_repo <- function(link = NULL) {
 #'
 #' Update Course Repo Link in the header.
 #'
-#' @param link The new repo link to replace the current repo link with.
 #' @export
 update_sheets_link <- function() {
   store_posts_sheet()

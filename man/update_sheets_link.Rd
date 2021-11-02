@@ -6,9 +6,6 @@
 \usage{
 update_sheets_link()
 }
-\arguments{
-\item{link}{The new repo link to replace the current repo link with.}
-}
 \description{
 Update Course Repo Link in the header.
 }
