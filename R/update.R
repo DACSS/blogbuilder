@@ -62,3 +62,14 @@ update_course_repo <- function(link = NULL) {
   yml_content$navbar$right[[4]]$href = Sys.getenv('COURSE_REPO')
   yaml::write_yaml(yml_content, "_site.yml")
 }
+
+
+#' Update Sheets Link
+#'
+#' Update Course Repo Link in the header.
+#'
+#' @param link The new repo link to replace the current repo link with.
+#' @export
+update_sheets_link <- function() {
+  store_posts_sheet()
+}
