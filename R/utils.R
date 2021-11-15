@@ -254,3 +254,36 @@ store_posts_sheet <- function() {
   writeLines(sheets_url, fileConn)
   close(fileConn)
 }
+
+# Send email
+send_email <- function(to_email, url) {
+  # Compose email
+  date_time <- blastula::add_readable_time()
+  email <-
+    blastula::compose_email(
+      body = md(glue::glue(
+        "Hello,", paste0("Your post at ", url," has been imported."), )),
+      footer = md(glue::glue("Email sent on {date_time}."))
+    )
+
+  creds <- rjson::fromJSON(file= "email_creds" )
+  from_email <- creds$value[[5]]$value
+  readRenviron(".env")
+  course_title <- Sys.getenv('COURSE_TITLE')
+
+  # Send email
+  email %>%
+    blastula::smtp_send(
+      to = to_email,
+      from = from_email,
+      subject = paste('[', course_title, ']'),
+      credentials = creds_file("email_creds")
+    )
+}
+
+# Setup Email Creds
+setup_email_creds <- function() {
+  email <- readline('Please input your email: ')
+  blastula::create_smtp_creds_file(file = "email_creds", user = email, provider = "gmail")
+}
+

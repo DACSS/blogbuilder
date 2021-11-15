@@ -111,8 +111,18 @@ build_student_pages <- function() {
 import_posts <- function() {
   # "https://docs.google.com/spreadsheets/d/1BzpTglVbQ331UUJXlh3K3fOVGN0aaHh7s2CHfGwzTfw/edit?resourcekey#gid=311435407"
 
-  sheets_link = readLines("local.txt")
-  posts = googlesheets4::read_sheet(sheets_link, sheet="Form Responses 1")
+  tryCatch(
+    expr = {
+      sheets_link = readLines("local.txt")
+      posts = googlesheets4::read_sheet(sheets_link, sheet="Form Responses 1")
+    },
+    error = function(e){
+      message('Invalid or no google sheets link provided! Please use update_sheets_link() to provide a valid google sheets URL and run import_posts() again.')
+    },
+    warning = function(w){
+      message('Invalid or no google sheets link provided! Please use update_sheets_link() to provide a valid google sheets URL and run import_posts() again.')
+    }
+  )
 
   for (i in seq_along(posts$`Email Address`)) {
     tryCatch(
@@ -134,7 +144,7 @@ import_posts <- function() {
         print(e)
       },
       warning = function(w){
-        message('Caught a warning!')
+        message(paste0('A warning occured for post link ', row$URL, ' by ', row$`Email Address`))
         print(w)
       }
     )

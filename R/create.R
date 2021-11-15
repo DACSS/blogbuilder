@@ -32,8 +32,8 @@ create_course_blog <- function() {
   # Instructor form
   instructor_form()
 
-  # Store the URL for the google sheets linked to the form in local.txt file
-  store_posts_sheet()
+  # Get URL for the google sheets linked to the form in local.txt file
+  sheets_url <- readline('Please paste your posts URL sheet\'s link and hit enter: ')
 
   # User inputs directory path
   directory <- directory_input()
@@ -47,7 +47,10 @@ create_course_blog <- function() {
   # New project
   if (length(create_dacss_proj(repo_link, directory))) {
     setwd(new_proj_path)
-
+    # Store the URL we got
+    fileConn<-file("local.txt")
+    writeLines(sheets_url, fileConn)
+    close(fileConn)
     # Update course
     row <- retrieve_row(repo_link, initialize = TRUE)
     initialize_project(row[1:1, ])  #Selecting the first row
