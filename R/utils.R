@@ -261,9 +261,9 @@ send_email <- function(to_email, url) {
   date_time <- blastula::add_readable_time()
   email <-
     blastula::compose_email(
-      body = md(glue::glue(
+      body = blastula::md(glue::glue(
         "Hello,", paste0("Your post at ", url," has been imported."), )),
-      footer = md(glue::glue("Email sent on {date_time}."))
+      footer = blastula::md(glue::glue("Email sent on {date_time}."))
     )
 
   creds <- rjson::fromJSON(file= "email_creds" )
@@ -277,7 +277,7 @@ send_email <- function(to_email, url) {
       to = to_email,
       from = from_email,
       subject = paste('[', course_title, ']'),
-      credentials = creds_file("email_creds")
+      credentials = blastula::creds_file("email_creds")
     )
 }
 

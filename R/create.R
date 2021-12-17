@@ -51,6 +51,8 @@ create_course_blog <- function() {
     fileConn<-file("local.txt")
     writeLines(sheets_url, fileConn)
     close(fileConn)
+    # Set up the credentials for the email account that would be used to send emails - gmail emails only.
+    setup_email_creds()
     # Update course
     row <- retrieve_row(repo_link, initialize = TRUE)
     initialize_project(row[1:1, ])  #Selecting the first row
