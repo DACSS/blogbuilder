@@ -137,6 +137,8 @@ import_posts <- function() {
         url <- row$URL
 
         distill::import_post(url, overwrite = TRUE)
+
+        send_email(email, url)
       },
       error = function(e){
         # Ideally email the students that their post failed as well.
