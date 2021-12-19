@@ -272,8 +272,8 @@ send_email <- function(to_email, url) {
   course_title <- Sys.getenv('COURSE_TITLE')
 
   # Send email
-  email %>%
     blastula::smtp_send(
+      email = email,
       to = to_email,
       from = from_email,
       subject = paste('[', course_title, ']'),
