@@ -136,7 +136,7 @@ import_posts <- function() {
         email <- row$`Email Address`
         url <- row$URL
 
-        distill::import_post(url, overwrite = TRUE)
+        distill::import_post(url, overwrite = TRUE, check_license = FALSE)
 
         send_email(email, url)
       },

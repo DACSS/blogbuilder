@@ -262,7 +262,13 @@ send_email <- function(to_email, url) {
   email <-
     blastula::compose_email(
       body = blastula::md(glue::glue(
-        "Hello,", paste0("Your post at ", url," has been imported."), )),
+"Hello,
+
+Your post at {url} has been imported to DACSS [601 course blog](google.com).
+
+Best, \n
+Course Staff
+")),
       footer = blastula::md(glue::glue("Email sent on {date_time}."))
     )
 
