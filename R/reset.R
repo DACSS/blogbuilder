@@ -1,8 +1,6 @@
-#' Reset the Project Environment
+#' Reset project env
 #'
-#' Resets the project environment to the initial settings
-#' created from the Google Spreadsheet inputs.
-#'
+#' Reset the project environment.
 #' @export
 reset_project_env <- function() {
   correct_env()

@@ -2,11 +2,10 @@
 % Please edit documentation in R/reset.R
 \name{reset_project_env}
 \alias{reset_project_env}
-\title{Reset the Project Environment}
+\title{Reset project env}
 \usage{
 reset_project_env()
 }
 \description{
-Resets the project environment to the initial settings
-created from the Google Spreadsheet inputs.
+Reset the project environment.
 }
