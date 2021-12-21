@@ -285,7 +285,7 @@ Course Staff
       email = email,
       to = to_email,
       from = from_email,
-      subject = paste(course_title, ' Post Import Notification'),
+      subject = paste(course_title, 'Post Import Notification'),
       credentials = blastula::creds_file("email_creds")
     )
 }
