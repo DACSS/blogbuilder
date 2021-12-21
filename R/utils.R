@@ -258,13 +258,17 @@ store_posts_sheet <- function() {
 # Send email
 send_email <- function(to_email, url) {
   # Compose email
+
+  readRenviron(".env")
+  course_title <- Sys.getenv('COURSE_TITLE')
+
   date_time <- blastula::add_readable_time()
   email <-
     blastula::compose_email(
       body = blastula::md(glue::glue(
 "Hello,
 
-Your post at {url} has been imported to DACSS 601 course blog.
+Your post at {url} has been imported to {course_title} course blog.
 
 Best, \n
 Course Staff
@@ -274,15 +278,14 @@ Course Staff
 
   creds <- rjson::fromJSON(file= "email_creds" )
   from_email <- creds$value[[5]]$value
-  readRenviron(".env")
-  course_title <- Sys.getenv('COURSE_TITLE')
+
 
   # Send email
     blastula::smtp_send(
       email = email,
       to = to_email,
       from = from_email,
-      subject = paste('[', course_title, ']'),
+      subject = paste(course_title, ' Post Import Notification'),
       credentials = blastula::creds_file("email_creds")
     )
 }
