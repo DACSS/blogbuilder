@@ -264,7 +264,7 @@ send_email <- function(to_email, url) {
       body = blastula::md(glue::glue(
 "Hello,
 
-Your post at {url} has been imported to DACSS [601 course blog](google.com).
+Your post at {url} has been imported to DACSS 601 course blog.
 
 Best, \n
 Course Staff
